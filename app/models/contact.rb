@@ -3,5 +3,5 @@ class Contact < ApplicationRecord
 
   belongs_to :contactable, polymorphic: true
 
-  validates :user_id, uniqueness: { scope: [:user_id, :contactable_type]}
+  validates :user_id, uniqueness: { scope: [:contactable_id, :contactable_type]}
 end

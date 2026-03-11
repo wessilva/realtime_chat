@@ -1,11 +1,11 @@
 <div id="avatar_<%= instance.id %>">
     <% if instance.avatar.attached? %>
     <div class="w-12 h-12 flex justify-center items-center rounded-full overflow-hidden">
-      <%= image_tag instance.avatar, class: "w-12 h-12 rounded-full object-cover" %>
+      <%= image_tag instance.avatar, class: "w-full h-full  object-cover" %>
     </div>
     <% else %>
-      <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center">
-        <span class="text-gray-600 font-bold"><%= instance.name.first.upcase %></span>
+      <div class="avatar_circle" style="padding:5px; width:36px; height:36px; outline:0px;font-size: 16px; <%= gradient_from_created_at(instance.created_at) %>">
+        <%= first_letters(instance.name.to_s.upcase) %>
       </div>
     <% end %>
 </div>
