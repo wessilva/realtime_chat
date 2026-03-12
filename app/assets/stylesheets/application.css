@@ -27,3 +27,19 @@
      transition: background-color 0.1s ease, outline 0.1s ease;
      outline: 10px solid rgb(229, 231, 235);
  }
+
+ .avatar_navbar_circle {
+     padding: 4px 12px 4px 12px;
+     background-color: #a66cfe;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: rgb(31 41 55);
+     /* You can adjust the text color */
+     font-size: 18px;
+     /* Adjust the font size of the letter "T" */
+     font-weight: 600;
+     /* You can adjust the font weight if needed */
+     transition: background-color 0.1s ease, outline 0.1s ease;
+ }

@@ -1,17 +1,17 @@
 <div id="user_profile_<%= user.id %>">
-  <div class="flex justify-between py-2 px-2 rounded-lg  hover:bg-red-500 <%= "bg-gray-100" if params[:id].to_i == user.id && request.url.include?("/users/") %>">
-    <div class="text-left flex">
+  <div class="flex justify-between py-2 px-2 rounded-lg hover:bg-gray-700 <%= "bg-gray-700" if params[:id].to_i == user.id && request.url.include?("/users/") %>">
+    <div class="text-left flex justify-center items-center ">
       <div class="relative inline-flex items-center justify-center">
         <div class="flex items-center justify-center relative">
-          <%= render partial: "/avatar/avatar", locals: {instance: user } %>
+          <%= render partial: "layouts/avatar/avatar", locals: {instance: user } %>
 
           <%# = render "users/mode", user: user %>
         </div>
       </div>
 
-      <div class="text-left">
-        <%= link_to user.name, user_path(user.id), 
-                class: "px-3 pt-2 font-semibold text-grey-800 hover:underline hover:bg-gray-100" %>
+      <div class="text-left items-center justify-center ml-3 ">
+        <%= link_to user.name, user_path(user.id),
+                class: "px-3 pt-2 font-semibold text-gray-200 hover:text-white" %>
 
         <div id="last_message_user_<%= user.id %>" class="px-3 pt-0">
           <%# = last_message_room(current_user, user) if current_user.present? %>
@@ -23,13 +23,13 @@
     <div
       id="user_count_<%= user.id if (params[:id].to_i != user.id && request.url.include?("/users")) || request.url.include?("/contacts") || request.url.include?("/groups") %>"
     >
-      <div class="text-white p-2 hidden">
+      <div class="text-black p-2 hidden">
         <div
           class=" bg-green-500"
           style="padding:5px; width:36px; height:36px; outline:0px;font-size: 16px;"
         >
           <div>
-            
+            0
           </div>
         </div>
       </div>

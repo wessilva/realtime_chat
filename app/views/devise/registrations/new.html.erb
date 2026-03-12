@@ -1,34 +1,77 @@
-<h2>Sign up</h2>
+<div class="min-h-[calc(100vh-65px)] flex items-center justify-center bg-gray-900 px-4 py-10">
+  <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-8">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <!-- Header -->
+    <div class="flex flex-col items-center mb-8">
+      <i class="fa-solid fa-shield-cat fa-3x mb-3" style="color: #a66cfe"></i>
+      <h2 class="text-2xl font-bold text-white">Criar conta</h2>
+      <p class="text-gray-400 text-sm mt-1">Junte-se ao Real-time Chat</p>
+    </div>
 
-  <div class="field">
-    <p><%= f.label :name %></p>
-    <p><%= f.text_field :name, autofocus: true, autocomplete: "name" %></p>
-  </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
-  </div>
+      <!-- Erros -->
+      <% if resource.errors.any? %>
+        <div class="bg-red-500 bg-opacity-20 border border-red-500 text-red-400 rounded-lg px-4 py-3 mb-6 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <% resource.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <p><%= f.label :password %></p>
-    <% if @minimum_password_length %>
-      <p><em>(<%= @minimum_password_length %> characters minimum)</em></p>
+      <!-- Nome -->
+      <div class="mb-5">
+        <%= f.label :name, "Nome", class: "block text-sm font-medium text-gray-300 mb-2" %>
+        <%= f.text_field :name,
+              autofocus: true,
+              autocomplete: "name",
+              placeholder: "Seu nome",
+              class: "w-full bg-gray-700 text-white placeholder-gray-500 border border-gray-600 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent" %>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-5">
+        <%= f.label :email, "E-mail", class: "block text-sm font-medium text-gray-300 mb-2" %>
+        <%= f.email_field :email,
+              autocomplete: "email",
+              placeholder: "seu@email.com",
+              class: "w-full bg-gray-700 text-white placeholder-gray-500 border border-gray-600 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent" %>
+      </div>
+
+      <!-- Senha -->
+      <div class="mb-5">
+        <%= f.label :password, "Senha", class: "block text-sm font-medium text-gray-300 mb-2" %>
+        <%= f.password_field :password,
+              autocomplete: "new-password",
+              placeholder: "••••••••",
+              class: "w-full bg-gray-700 text-white placeholder-gray-500 border border-gray-600 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent" %>
+        <% if @minimum_password_length %>
+          <p class="text-xs text-gray-500 mt-1">Mínimo de <%= @minimum_password_length %> caracteres</p>
+        <% end %>
+      </div>
+
+      <!-- Confirmação de senha -->
+      <div class="mb-6">
+        <%= f.label :password_confirmation, "Confirmar senha", class: "block text-sm font-medium text-gray-300 mb-2" %>
+        <%= f.password_field :password_confirmation,
+              autocomplete: "new-password",
+              placeholder: "••••••••",
+              class: "w-full bg-gray-700 text-white placeholder-gray-500 border border-gray-600 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent" %>
+      </div>
+
+      <!-- Submit -->
+      <%= f.submit "Criar conta",
+            class: "w-full bg-violet-600 hover:bg-violet-500 text-white font-semibold py-2.5 rounded-lg text-sm transition-colors cursor-pointer" %>
     <% end %>
-    <p><%= f.password_field :password, autocomplete: "new-password" %></p>
-  </div>
 
-  <div class="field">
-    <p><%= f.label :password_confirmation %></p>
-    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
-  </div>
+    <!-- Link para login -->
+    <p class="text-center text-sm text-gray-400 mt-6">
+      Já tem uma conta?
+      <%= link_to "Entrar", new_session_path(resource_name),
+            class: "text-violet-400 font-medium hover:underline" %>
+    </p>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
