@@ -70,3 +70,5 @@ end
 gem "devise", "~> 5.0"
 
 gem 'dotenv', groups: [:development, :test]
+
+gem 'redis'

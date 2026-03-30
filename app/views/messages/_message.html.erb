@@ -1,0 +1,33 @@
+<div class="py-2">
+  <%# turbo-frame id="message_1" %>
+  <%= turbo_frame_tag dom_id(message) do %>
+    <div class="message" data-user-id="<%= message.user.id %>">
+      <div class="cUser_msgAlign_<%= message.user.id %>">
+        <div class="rounded-lg py-3 bg-gray-500 px-5 inline-block text-white cUser_msg_<%= message.user.id %>">
+          <% unless ( message.messageable_type == "Room") %>
+            <h6><%= message.user.email %></h6>
+          <% end %>
+
+          <div>
+            <%= message.created_at.strftime("%H:%M:%S") %>
+          </div>
+
+          <%# turbo-frame id="message_1_controls" %>
+          <%= turbo_frame_tag [dom_id(message), "controls"] do %>
+            <% if delButton %>
+              <div class="hidden cUser_delButton_<%= message.user.id %>">
+                <%# Delete Button %>
+                <%= link_to 'Delete',  message_path(message), method: :delete,
+                                data: { confirm: "Are you sure?", turbo_method: :delete }, class: "" %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <div>
+            <%= message.body %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

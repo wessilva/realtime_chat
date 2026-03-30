@@ -1,0 +1,9 @@
+<% if !current_user.added_users.any?{|contact| contact.id == @user.id } %>
+  <%= button_to "/users/#{@user.id}/contacts", method: :post, class: "rounded-lg py-2 px-2 pr-3 bg-blue-600 text-white inline-block font-medium cursor-pointer" do %>
+    <i class="fa-regular fa-square-plus" style="padding: 0 5px 0 5px"></i>Add contact
+  <% end %>
+<% else %>
+  <%= button_to "/users/#{current_user.id}/contacts/#{@user.id}", method: :delete, class: "rounded-lg py-2 px-2 pr-3 bg-blue-600 text-white inline-block font-medium cursor-pointer" do %>
+    <i class="fa-regular fa-trash-can" style="padding: 0 5px 0 5px"></i>Remove contact
+  <% end %>
+<% end %>

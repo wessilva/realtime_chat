@@ -9,6 +9,8 @@ class User < ApplicationRecord
          #Associação polimórfica com contatos
   has_many :contacts, dependent: :destroy
 
+  has_many :messages, dependent: :destroy
+
   has_many :conversants, dependent: :destroy
 
   has_many :admin_groups, class_name: 'Group', foreign_key: 'admin_id'

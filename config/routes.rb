@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root "pages#home"
   devise_for :users
 
@@ -12,9 +13,18 @@ Rails.application.routes.draw do
   # groups_path
   resources :groups # define /groups/:id
 
+  # group_message_path
   resources :groups, only: [] do
     resource :avatar, only: [:destroy], module: :groups
+    resources :messages
   end
+
+  # room_messages_path
+  resources :rooms do 
+    resources :messages
+  end
+
+  resources :messages, only: [:destroy]
 
   get 'search', to: 'search#find_all'
   
