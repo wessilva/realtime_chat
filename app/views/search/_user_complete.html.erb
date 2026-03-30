@@ -1,0 +1,10 @@
+<div class="py-2 rounded-lg hover:bg-gray-100">
+  <div class="font-normal text-grey-800 flex">
+    <%= render partial: "users/user", locals: { user: user } %>
+  </div>
+
+  <h4 style="padding-left: 66px">
+    <%= link_to user.email, user_path(user.id), 
+        class: "text-sm text-grey-800 hover:underline rounded-lg flex" %>
+  </h4>
+</div>

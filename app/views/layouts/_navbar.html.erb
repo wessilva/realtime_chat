@@ -31,7 +31,7 @@
     <!-- Button Abbreviation -->
     <%= content_tag(:button, data: {action: "click->menu-navbar#toggle"}, class: "inline-flex items-center justify-center text-sm text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-0 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600") do %>
       <div
-        class="avatar_navbar_circle hover:text-emerald-400"
+        class="avatar_navbar_circle hover:text-emerald-400 cursor-pointer"
         style="padding:5px; width:30px; height:30px"
       >
         <% if user_signed_in? %>
@@ -63,18 +63,17 @@
       <ul
         class="
           flex flex-col font-medium rounded-lg  dark:bg-gray-800
-          
         "
       >
-        <li>
+        <li >
           <% if current_user %>
-              <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"block py-3 px-3 cursor-pointer text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white w-full text-left" %>
+              <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"block py-3 px-3 cursor-pointer text-gray-900 hover:bg-gray-100 hover:rounded-lg  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white w-full text-left" %>
             <li>
-              <%= link_to "Edit Profile", edit_user_registration_path, class:"block py-3 pb-4 px-3 text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class:"block py-3 pb-4 px-3 text-gray-900 hover:bg-gray-100 hover:rounded-lg dark:text-gray-400  dark:hover:bg-gray-700 dark:hover:text-white" %>
             </li>
           <% else %>
-            <%= link_to "Register", new_user_registration_path, class: "block py-3 pb-4 px-3 text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" %>
-            <%= link_to "Login", new_user_session_path, class: "block py-3 pb-4 px-3 text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" %>
+            <%= link_to "Register", new_user_registration_path, class: "block py-3 pb-4 px-3 text-gray-900 hover:bg-gray-100 hover:rounded-lg dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" %>
+            <%= link_to "Login", new_user_session_path, class: "block py-3 pb-4 px-3 text-gray-900 hover:bg-gray-100 hover:rounded-lg dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" %>
           <% end %>
         </li>
       </ul>

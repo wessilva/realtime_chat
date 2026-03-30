@@ -5,9 +5,9 @@
     <div class="flex flex-col items-center mb-8">
       <% if current_user&.avatar.present? %>
         <div id="user_avatar_<%= current_user.id %>" class="mb-3 flex flex-col items-center gap-3">
-          <%= image_tag current_user.avatar, class: "w-20 h-20 rounded-full object-cover border-2 border-violet-500" %>
+          <%= image_tag current_user.avatar, alt: "Foto de perfil", class: "w-20 h-20 rounded-full object-cover border-2 border-violet-500" %>
           <%= link_to "Remover foto", user_avatar_path(current_user),
-                data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
+                method: :delete, data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
                 class: "text-xs text-red-400 hover:underline" %>
         </div>
       <% else %>

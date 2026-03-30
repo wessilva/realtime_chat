@@ -1,0 +1,37 @@
+<%= turbo_stream.update "found-results" do %>
+  <% if @found_users.present? && @found_users.count > 0 %>
+    <div class="py-1">
+      FOUND USERS
+      <div
+        class="relative overflow-x-auto sm:rounded-lg py-1"
+        style="white-space: nowrap"
+      >
+        <% @found_users.each do |user| %>
+          <div>
+            <%= render partial: "search/user_complete", locals: { user:  } %>
+          </div>
+        <% end %>
+
+        <hr class="h-px my-2 px-4 bg-gray-300 border-0 dark:bg-gray-700">
+      </div>
+    </div>
+  <% end %>
+
+  <% if @found_groups.present? && @found_groups.count > 0 %>
+    <div class="py-1">
+      FOUND GROUPS
+      <div
+        class="relative overflow-x-auto sm:rounded-lg py-1"
+        style="white-space: nowrap"
+      >
+        <% @found_groups.each do |group| %>
+          <div>
+            <%= render partial: "groups/group", locals: { group: group } %>
+          </div>
+        <% end %>
+
+        <hr class="h-px my-2 px-4 bg-gray-300 border-0 dark:bg-gray-700">
+      </div>
+    </div>
+  <% end %>
+<% end %>

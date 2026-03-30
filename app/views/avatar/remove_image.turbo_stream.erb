@@ -1,0 +1,17 @@
+<%# = We use here case statement between Users Avatars and Groups Avatars %>
+<%= turbo_stream.update instance do %>
+  <% case partial %>
+  <% when "groups/group" %>
+    <%= render partial: partial, locals: { instance:, group: @group } %>
+  <% when "users/user" %>
+    <%= render partial: partial, locals: { instance:, user: @user } %>
+  <% end %>
+<% end %>
+
+<%# = turbo_stream.update avatar_big do %>
+<%# = render partial: "layouts/avatar/avatar_big", locals: {instance:  } %>
+<%# end %>
+<%# = turbo_stream.update chat_header do %>
+<%# = render partial: "layouts/header/chat_header", locals: {instance:  } %>
+<%# end %>
+<%= turbo_stream.remove instance_avatar %>

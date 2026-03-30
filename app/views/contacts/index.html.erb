@@ -20,13 +20,13 @@
         </div>
       </div>
 
-      <%# = render "search/form_search" %>
+      <%= render "search/form_search" %>
     </div>
 
     <div class="h-auto md:h-[calc(100vh-250px)] overflow-y-auto">
-      <div id="found_user"></div>
+      <div id="found-results"></div>
       <h2 class="pt-2 text-gray-400 text-xs tracking-widest">GROUPS</h2>
-      <div id="groups"><%# = render @groups %></div>
+      <div id="groups"><%= render @groups %></div>
       <h2 class="pt-2 text-gray-400 text-xs tracking-widest">USERS</h2>
       <div id="users"><%= render @users %></div>
     </div>
@@ -34,7 +34,7 @@
 
   <div
     class="
-      bg-gray-700 p-4 pb-2 md:col-span-1 md:w-2/3 overflow-y-auto
+      bg-gray-500 p-4 pb-2 md:col-span-1 md:w-2/3 overflow-y-auto
       sm:h-[calc(100vh-65px)] h-[calc(75vh-65px)]
     "
   ></div>

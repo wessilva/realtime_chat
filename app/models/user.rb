@@ -15,4 +15,20 @@ class User < ApplicationRecord
 
   has_many :added_users, through: :contacts, source: :contactable, source_type: 'User'
   has_many :added_groups, through: :contacts, source: :contactable, source_type: 'Group'
+
+  def self.find_users(search_item)
+    begin   
+      users = where("name ~* :s OR email ~* :s", {s: search_item })
+
+      return nil if users.empty?
+      return users
+
+    rescue => exception
+        return nil
+    end
+  end
+ 
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
 end

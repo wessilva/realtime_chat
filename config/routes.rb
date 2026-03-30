@@ -5,8 +5,18 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :users, only: [] do 
+    resource :avatar, only: [:destroy], module: :users
     resources :contacts, only: [:index, :create, :destroy]
   end
+
+  # groups_path
+  resources :groups # define /groups/:id
+
+  resources :groups, only: [] do
+    resource :avatar, only: [:destroy], module: :groups
+  end
+
+  get 'search', to: 'search#find_all'
   
   get "up" => "rails/health#show", as: :rails_health_check
 

@@ -1,0 +1,35 @@
+<div>
+  <div class="flex justify-between items-center p-2 rounded-lg hover:bg-gray-700 <%= "bg-gray-100" if params[:id].to_i == group.id && request.url.include?("/groups/") %>">
+    <div id="group_<%= group.id %>" class="text-left flex">
+      <%= render partial: "layouts/avatar/avatar", locals: {instance: group } %>
+
+      <div class="text-left py-1 px-3 text-grey-800 hover:underline <%= "bg-gray-100" if params[:id].to_i == group.id && request.url.include?("/groups/") %>">
+        <h4>
+          <%= link_to group.name, group_path(group), class: "font-semibold text-white" %>
+        </h4>
+
+        <div id="last_message_group_<%= group.id %>">
+          <%# = group.messages&.last&.body %>
+        </div>
+      </div>
+    </div>
+
+    <%# Unread notifications %>
+    <div
+      id="group_count_<%= group.id if (params[:id].to_i != group.id && !request.url.include?("/groups/")) || request.url.include?("/users") || request.url.include?("/contacts") %>"
+    >
+      <div class="text-white p-2 hidden">
+        <div
+          class="avatar_circle bg-green-500"
+          style="padding:5px; width:36px; height:36px; outline:0px;font-size: 16px;"
+        >
+          <div>
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# End of Unread notifications %>
+  </div>
+</div>
